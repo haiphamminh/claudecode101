@@ -24,14 +24,16 @@ There are no tests, linters, or build commands.
 
 ## Architecture
 
-- **`index.html`** — Single-page app with all content sections (hero, setup guide, agentic loop, agents/skills, MCP/skills setup, CLAUDE.md explainer, orchestrator pattern, security, tips, footer). Uses Tailwind CSS via CDN (`cdn.tailwindcss.com`).
-- **`js/tailwind-config.js`** — Tailwind theme overrides (custom fonts Inter/Fira Code, extended slate and cyan color palette).
-- **`js/main.js`** — Minimal JS: just a `copyCode()` clipboard helper for code snippet buttons.
-- **`css/styles.css`** — Custom CSS for terminal typing animations (keyframe-based with staggered delays), radial gradient backgrounds, and scrollbar styling.
+Self-contained single file — all CSS, JS, and Tailwind config are inlined in `index.html`. No external asset files.
+
+- **`index.html`** — Everything: Tailwind config, custom CSS (terminal animations, scrollbar, radial gradients), `copyCode()` JS helper, and all page sections. Uses Tailwind CSS via CDN (`cdn.tailwindcss.com`). The file is minified for production.
+- Section order: Hero -> Agentic Loop -> Agents/Skills -> CLAUDE.md -> Setup -> MCPs/Skills -> Orchestrator -> Tips -> Security -> Footer
+- Navigation groups: Fundamentals, Practice, Resources
 
 ## Conventions
 
-- Styling is done via Tailwind utility classes inline in HTML. Custom CSS in `css/styles.css` is only for animations and effects that Tailwind can't express.
+- Styling is done via Tailwind utility classes inline in HTML. Inline `<style>` block is only for animations and effects that Tailwind can't express.
 - The dark color scheme uses slate-950 (`#020617`) as the base background with cyan-400/500 as the accent color.
 - Navigation uses CSS-only dropdown menus (group-hover pattern), no JS.
-- Section IDs (`#setup`, `#loop`, `#collaboration`, `#claudemd`, `#orchestrator`, `#extend-claude`, `#security`, `#tips`) are used for smooth-scroll anchor navigation.
+- Section IDs (`#loop`, `#collaboration`, `#claudemd`, `#setup`, `#extend-claude`, `#orchestrator`, `#tips`, `#security`) are used for smooth-scroll anchor navigation.
+- When editing, work on the unminified source and re-minify with: `npx html-minifier-terser --collapse-whitespace --remove-comments --remove-redundant-attributes --minify-css true --minify-js true index.html -o index.min.html && mv index.min.html index.html`

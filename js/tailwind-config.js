@@ -1,1 +1,0 @@
-tailwind.config={theme:{extend:{fontFamily:{sans:["Inter","sans-serif"],mono:["Fira Code","monospace"]},colors:{slate:{850:"#151e2e",900:"#0F172A",950:"#020617"},cyan:{400:"#22d3ee",500:"#06b6d4"}}}}};

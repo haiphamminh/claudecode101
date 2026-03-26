@@ -1,0 +1,125 @@
+{
+  "tools": [
+    {
+      "name": "Claude Code",
+      "repo": "anthropics/claude-code",
+      "website": "https://code.claude.com",
+      "features": {
+        "terminal": true,
+        "ide": true,
+        "web": true,
+        "agenticLoop": true,
+        "multiFileEdit": true,
+        "terminalAccess": true,
+        "mcpSupport": true,
+        "subagents": true,
+        "customSkills": true,
+        "extendedThinking": true,
+        "sandboxExecution": true
+      }
+    },
+    {
+      "name": "GitHub Copilot",
+      "repo": null,
+      "website": "https://github.com/features/copilot",
+      "features": {
+        "terminal": true,
+        "ide": true,
+        "web": true,
+        "agenticLoop": true,
+        "multiFileEdit": true,
+        "terminalAccess": true,
+        "mcpSupport": true,
+        "subagents": true,
+        "customSkills": false,
+        "extendedThinking": false,
+        "sandboxExecution": false
+      }
+    },
+    {
+      "name": "Cursor",
+      "repo": null,
+      "website": "https://cursor.com",
+      "features": {
+        "terminal": false,
+        "ide": true,
+        "web": false,
+        "agenticLoop": true,
+        "multiFileEdit": true,
+        "terminalAccess": true,
+        "mcpSupport": true,
+        "subagents": false,
+        "customSkills": true,
+        "extendedThinking": true,
+        "sandboxExecution": false
+      }
+    },
+    {
+      "name": "Windsurf",
+      "repo": "codeiumdev/codeium",
+      "website": "https://windsurf.com",
+      "features": {
+        "terminal": false,
+        "ide": true,
+        "web": false,
+        "agenticLoop": true,
+        "multiFileEdit": true,
+        "terminalAccess": true,
+        "mcpSupport": true,
+        "subagents": false,
+        "customSkills": true,
+        "extendedThinking": false,
+        "sandboxExecution": false
+      }
+    },
+    {
+      "name": "Cline",
+      "repo": "cline/cline",
+      "website": "https://cline.bot",
+      "features": {
+        "terminal": false,
+        "ide": true,
+        "web": false,
+        "agenticLoop": true,
+        "multiFileEdit": true,
+        "terminalAccess": true,
+        "mcpSupport": true,
+        "subagents": false,
+        "customSkills": false,
+        "extendedThinking": false,
+        "sandboxExecution": false
+      }
+    },
+    {
+      "name": "Aider",
+      "repo": "Aider-AI/aider",
+      "website": "https://aider.chat",
+      "features": {
+        "terminal": true,
+        "ide": false,
+        "web": true,
+        "agenticLoop": true,
+        "multiFileEdit": true,
+        "terminalAccess": true,
+        "mcpSupport": false,
+        "subagents": false,
+        "customSkills": false,
+        "extendedThinking": false,
+        "sandboxExecution": false
+      }
+    }
+  ],
+  "featureLabels": {
+    "terminal": "Terminal Native",
+    "ide": "IDE Integration",
+    "web": "Web Interface",
+    "agenticLoop": "Agentic Loop",
+    "multiFileEdit": "Multi-File Edit",
+    "terminalAccess": "Terminal Access",
+    "mcpSupport": "MCP Support",
+    "subagents": "Subagents",
+    "customSkills": "Custom Skills",
+    "extendedThinking": "Extended Thinking",
+    "sandboxExecution": "Sandbox Execution"
+  }
+}

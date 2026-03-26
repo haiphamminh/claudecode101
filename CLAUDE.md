@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Git
+
+- Default branch: `main`. Always work on and push to `main`.
+
 ## Project Overview
 
 This is a static single-page website ("Claude Code 101") — a beginner's guide to Claude Code, agentic workflows, and MCP integrations. There is no build step, bundler, or backend.

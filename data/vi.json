@@ -26,7 +26,7 @@
   "hero.title_line1": "Ngừng Gõ Phím.",
   "hero.title_line2": "Bắt Đầu Điều Phối.",
   "hero.subtitle": "Bước vào kỷ nguyên Agentic cùng Claude Code. Không chỉ là autocomplete trong IDE nữa - đây là trợ lý tự động đọc code, lên kế hoạch, và thực thi ngay trong terminal của bạn.",
-  "hero.cta_primary": "Khởi Tạo Workspace",
+  "hero.cta_primary": "Khởi Tạo Workspace <svg class=\"ml-2 w-4 h-4\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M14 5l7 7m0 0l-7 7m7-7H3\"></path></svg> ",
   "hero.cta_secondary": "Học Kiến Thức Nền",
   "hero.terminal_title": "user@machine: ~/project",
   "hero.terminal_cmd": "$ claude \"refactor auth middleware sang JWT thay vì session\"",

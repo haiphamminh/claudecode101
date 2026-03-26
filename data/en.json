@@ -26,7 +26,7 @@
   "hero.title_line1": "Stop Typing.",
   "hero.title_line2": "Start Orchestrating.",
   "hero.subtitle": "Enter the Agentic Era with Claude Code. Move beyond basic IDE autocomplete to an autonomous assistant that reads, plans, and executes directly in your terminal.",
-  "hero.cta_primary": "Initialize Workspace",
+  "hero.cta_primary": "Initialize Workspace <svg class=\"ml-2 w-4 h-4\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M14 5l7 7m0 0l-7 7m7-7H3\"></path></svg> ",
   "hero.cta_secondary": "Learn the Fundamentals",
   "hero.terminal_title": "user@machine: ~/project",
   "hero.terminal_cmd": "$ claude \"refactor the auth middleware to use JWT instead of sessions\"",

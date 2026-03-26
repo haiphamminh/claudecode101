@@ -26,15 +26,16 @@ There are no tests, linters, or build commands.
 
 - **`index.html`** — Single-page app with all content sections. Uses Tailwind CSS via CDN (`cdn.tailwindcss.com`). Minified for production.
 - **`js/tailwind-config.js`** — Tailwind theme overrides (custom fonts Inter/Fira Code, extended slate and cyan color palette).
-- **`js/main.js`** — Minimal JS: `copyCode()` clipboard helper for code snippet buttons.
-- **`css/styles.css`** — Custom CSS for terminal typing animations (keyframe-based with staggered delays), radial gradient backgrounds, and scrollbar styling.
-- Section order: Hero -> Agentic Loop -> Agents/Skills -> CLAUDE.md -> Setup -> MCPs/Skills -> Orchestrator -> Tips -> Security -> Footer
+- **`js/main.js`** — JS: clipboard helper, mobile menu toggle, scroll progress bar, back-to-top button, active nav highlighting (Intersection Observer).
+- **`css/styles.css`** — Custom CSS for terminal typing animations, radial gradients, scrollbar, scroll progress bar, back-to-top button, mobile menu transitions, active nav state.
+- **`.github/workflows/pages.yml`** — GitHub Pages deployment (auto-deploys on push to `main`).
+- Section order: Hero -> Agentic Loop -> Agents/Skills -> CLAUDE.md -> Setup -> MCPs/Skills -> Orchestrator -> Tips -> Security -> FAQ -> Footer
 - Navigation groups: Fundamentals, Practice, Resources
 
 ## Conventions
 
 - Styling is done via Tailwind utility classes inline in HTML. Custom CSS in `css/styles.css` is only for animations and effects that Tailwind can't express.
 - The dark color scheme uses slate-950 (`#020617`) as the base background with cyan-400/500 as the accent color.
-- Navigation uses CSS-only dropdown menus (group-hover pattern), no JS.
-- Section IDs (`#loop`, `#collaboration`, `#claudemd`, `#setup`, `#extend-claude`, `#orchestrator`, `#tips`, `#security`) are used for smooth-scroll anchor navigation.
+- Desktop navigation uses CSS-only dropdown menus (group-hover pattern). Mobile navigation uses a JS-toggled hamburger menu.
+- Section IDs (`#loop`, `#collaboration`, `#claudemd`, `#setup`, `#extend-claude`, `#orchestrator`, `#tips`, `#security`, `#faq`) are used for smooth-scroll anchor navigation with `scroll-padding-top` offset for the fixed nav.
 - All files are minified for production. JS via `terser`, CSS via `csso-cli`, HTML via `html-minifier-terser`.

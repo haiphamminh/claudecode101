@@ -38,6 +38,18 @@ function applyLang(e,t){
     var r=n[o].getAttribute("data-i18n");
     if(void 0!==t[r]){n[o].innerHTML=sanitizeI18n(t[r])}
   }
+  var attrEls=document.querySelectorAll("[data-i18n-attr]");
+  for(var a=0;a<attrEls.length;a++){
+    var spec=attrEls[a].getAttribute("data-i18n-attr");
+    var pairs=spec.split(",");
+    for(var p=0;p<pairs.length;p++){
+      var kv=pairs[p].split(":");
+      if(kv.length===2){
+        var attrName=kv[0].trim(),key=kv[1].trim();
+        if(void 0!==t[key])attrEls[a].setAttribute(attrName,t[key])
+      }
+    }
+  }
   var i=document.getElementById("lang-flag"),l=document.getElementById("lang-label");
   if(i)i.textContent="en"===e?"🇬🇧":"🇻🇳";
   if(l)l.textContent="en"===e?"EN":"VI";

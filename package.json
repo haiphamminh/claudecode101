@@ -1,0 +1,36 @@
+{
+  "name": "claudecode101",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Claude Code 101 — a developer guide to agentic loops, subagents, skills, MCPs, and orchestration. Static single-page site.",
+  "homepage": "https://haiphamminh.github.io/claudecode101/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haiphamminh/claudecode101.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "npx --yes serve .",
+    "serve": "python3 -m http.server 8000",
+    "minify:html": "html-minifier-terser --collapse-whitespace --remove-comments --minify-css true --minify-js true -o index.min.html index.html",
+    "minify:js": "terser js/main.js -c -m -o js/main.min.js",
+    "minify:css": "csso css/styles.css -o css/styles.min.css",
+    "build": "npm run minify:js && npm run minify:css && npm run minify:html",
+    "validate:html": "npx --yes html-validate index.html 404.html || true",
+    "lint:links": "npx --yes linkinator https://haiphamminh.github.io/claudecode101/ --recurse false --silent || true",
+    "lighthouse": "npx --yes @lhci/cli autorun --collect.url=http://localhost:8000 --collect.numberOfRuns=1 || true"
+  },
+  "devDependencies": {
+    "csso-cli": "^4.0.2",
+    "html-minifier-terser": "^7.2.0",
+    "terser": "^5.31.0"
+  },
+  "keywords": [
+    "claude-code",
+    "anthropic",
+    "agentic",
+    "mcp",
+    "documentation",
+    "tutorial"
+  ]
+}

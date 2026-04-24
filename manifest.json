@@ -1,0 +1,27 @@
+{
+  "name": "Claude Code 101 — Developer Fundamentals",
+  "short_name": "Claude Code 101",
+  "description": "A developer guide to Claude Code: agentic loops, subagents, skills, MCP servers, and polyglot orchestration.",
+  "start_url": "/claudecode101/",
+  "scope": "/claudecode101/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "lang": "en",
+  "categories": ["developer", "education", "productivity"],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,1 +1,43 @@
-@keyframes typing{0%{width:0;opacity:1}to{width:100%;opacity:1}}@keyframes blink-caret{0%,to{border-color:transparent}50%{border-color:#22d3ee}}@keyframes fade-in{0%{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}.terminal-line{overflow:hidden;white-space:nowrap;border-right:2px solid transparent;animation:typing 1s steps(40,end),blink-caret .75s step-end infinite}.delay-1{animation-delay:1s;animation-fill-mode:both}.delay-2,.delay-3,.delay-4{animation-delay:2.5s;animation-fill-mode:both}.delay-3,.delay-4{animation-delay:4s}.delay-4{animation-delay:5.5s}.animate-fade-in{animation:fade-in .3s ease-out forwards}.bg-gradient-radial{background:radial-gradient(circle at 15% 50%,rgba(6,182,212,.08),transparent 40%),radial-gradient(circle at 85% 30%,rgba(6,182,212,.05),transparent 40%)}::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#020617}::-webkit-scrollbar-thumb{background:#334155;border-radius:4px}::-webkit-scrollbar-thumb:hover{background:#475569}html{scroll-padding-top:5rem}#scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#22d3ee,#3b82f6);z-index:100;width:0%;transition:width .1s linear}#back-to-top{position:fixed;bottom:2rem;right:2rem;z-index:50;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .3s,visibility .3s,transform .3s}#back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0)}#mobile-menu{max-height:0;overflow:hidden;transition:max-height .3s ease-out}#mobile-menu.open{max-height:500px}.nav-link.active{color:#22d3ee}
+@keyframes typing{0%{width:0;opacity:1}to{width:100%;opacity:1}}@keyframes blink-caret{0%,to{border-color:transparent}50%{border-color:#22d3ee}}@keyframes fade-in{0%{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}@keyframes toast-in{0%{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}.terminal-line{overflow:hidden;white-space:nowrap;border-right:2px solid transparent;animation:typing 1s steps(40,end),blink-caret .75s step-end infinite}.delay-1{animation-delay:1s;animation-fill-mode:both}.delay-2,.delay-3,.delay-4{animation-delay:2.5s;animation-fill-mode:both}.delay-3,.delay-4{animation-delay:4s}.delay-4{animation-delay:5.5s}.animate-fade-in{animation:fade-in .3s ease-out forwards}.bg-gradient-radial{background:radial-gradient(circle at 15% 50%,rgba(6,182,212,.08),transparent 40%),radial-gradient(circle at 85% 30%,rgba(6,182,212,.05),transparent 40%)}::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#020617}::-webkit-scrollbar-thumb{background:#334155;border-radius:4px}::-webkit-scrollbar-thumb:hover{background:#475569}html{scroll-padding-top:5rem}#scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#22d3ee,#3b82f6);z-index:100;width:0%;transition:width .1s linear}#back-to-top{position:fixed;bottom:2rem;right:2rem;z-index:50;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .3s,visibility .3s,transform .3s}#back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0)}#mobile-menu{max-height:0;overflow:hidden;transition:max-height .3s ease-out}#mobile-menu.open{max-height:100vh;overflow-y:auto}.nav-link.active{color:#22d3ee}.nav-link.active[aria-current=page]{color:#22d3ee}
+
+/* Visible focus ring for keyboard users */
+:focus{outline:none}
+:focus-visible{outline:2px solid #22d3ee;outline-offset:2px;border-radius:4px}
+a:focus-visible,button:focus-visible,[role=button]:focus-visible,[tabindex]:focus-visible{outline:2px solid #22d3ee;outline-offset:2px}
+
+/* Nav dropdown: shown on hover (CSS) or when JS adds .open (click/keyboard) */
+nav .group.open > .group-hover\:opacity-100{opacity:1}
+nav .group.open > .group-hover\:visible{visibility:visible}
+/* While a dropdown is click-open (nav.nav-locked), hover must not open siblings */
+nav.nav-locked .group:not(.open) > .group-hover\:opacity-100{opacity:0!important}
+nav.nav-locked .group:not(.open) > .group-hover\:visible{visibility:hidden!important}
+
+/* Copy toast */
+#copy-toast{position:fixed;bottom:6rem;left:50%;transform:translate(-50%,12px);z-index:60;padding:.625rem 1rem;background:#0f172a;color:#22d3ee;border:1px solid #22d3ee;border-radius:.5rem;font-size:.875rem;font-weight:500;font-family:Inter,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .2s ease-out,transform .2s ease-out}
+#copy-toast.visible{opacity:1;transform:translate(-50%,0);animation:toast-in .25s ease-out}
+
+/* Respect user motion preference */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .terminal-line{overflow:visible;white-space:normal;border-right:none;animation:none;width:auto!important;opacity:1!important}
+  .delay-1,.delay-2,.delay-3,.delay-4{animation:none;opacity:1!important}
+  .animate-pulse,.animate-spin,.animate-fade-in{animation:none!important}
+  #scroll-progress{transition:none}
+}
+
+/* Print styles */
+@media print{
+  *{background:transparent!important;color:#000!important;box-shadow:none!important;text-shadow:none!important}
+  body{font-family:Georgia,serif;font-size:11pt;line-height:1.5}
+  nav,#mobile-menu,#scroll-progress,#back-to-top,#copy-toast,button[onclick],.group-hover\:visible,[aria-hidden=true]{display:none!important}
+  section{page-break-inside:avoid;padding:.75rem 0!important;border:none!important}
+  h1,h2,h3,h4{page-break-after:avoid;color:#000!important}
+  h1{font-size:20pt}h2{font-size:16pt}h3{font-size:13pt}
+  a{color:#0645ad!important;text-decoration:underline}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555!important}
+  a[href^="#"]::after{content:""}
+  code,pre{font-family:"Courier New",monospace;font-size:9pt;background:#f4f4f4!important;color:#000!important;border:1px solid #ddd!important}
+  pre{padding:.5rem;white-space:pre-wrap;word-wrap:break-word;page-break-inside:avoid}
+  img,svg{max-width:100%!important;page-break-inside:avoid}
+  .bg-gradient-radial,[class*=bg-],[class*=shadow],[class*=backdrop]{background:none!important}
+}

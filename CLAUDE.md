@@ -12,30 +12,37 @@ This is a static single-page website ("Claude Code 101") — a beginner's guide 
 
 ## Development
 
-To preview locally, open `index.html` in a browser or use any static file server:
-
 ```bash
-npx serve .
+npm start              # npx serve .
 # or
-python3 -m http.server
+python3 -m http.server 8000
 ```
 
-There are no tests, linters, or build commands.
+Build (optional): `npm run build` — emits `index.min.html`, `js/main.min.js`, `css/styles.min.css`.
+
+No tests. HTML/JS/CSS linting is opt-in via `npm run validate:html` and `npm run lint:links`.
 
 ## Architecture
 
-- **`index.html`** — Single-page app with all content sections. Uses Tailwind CSS via CDN (`cdn.tailwindcss.com`). Minified for production.
-- **`js/tailwind-config.js`** — Tailwind theme overrides (custom fonts Inter/Fira Code, extended slate and cyan color palette).
-- **`js/main.js`** — JS: clipboard helper, mobile menu toggle, scroll progress bar, back-to-top button, active nav highlighting (Intersection Observer).
-- **`css/styles.css`** — Custom CSS for terminal typing animations, radial gradients, scrollbar, scroll progress bar, back-to-top button, mobile menu transitions, active nav state.
-- **`.github/workflows/pages.yml`** — GitHub Pages deployment (auto-deploys on push to `main`).
-- Section order: Hero -> Agentic Loop -> Agents/Skills -> CLAUDE.md -> Setup -> MCPs/Skills -> Orchestrator -> Tips -> Security -> FAQ -> Footer
+- **`index.html`** — Single-page app. Tailwind CSS via CDN (`cdn.tailwindcss.com`). Minified for production. Contains JSON-LD (`WebSite`, `Organization`, `SoftwareApplication`, `FAQPage`), full OG/Twitter cards, canonical, hreflang.
+- **`404.html`** — Branded fallback page served by GitHub Pages on unknown routes.
+- **`manifest.json`, `robots.txt`, `sitemap.xml`** — PWA manifest + SEO.
+- **`favicon.svg`, `apple-touch-icon.svg`, `og-image.svg`** — Brand assets (inline SVG, scale to any size).
+- **`js/tailwind-config.js`** — Theme overrides (Inter/Fira Code, slate/cyan palette).
+- **`js/main.js`** — i18n loader (with HTML sanitization, browser locale detection, `<html lang>` sync), copy-to-clipboard + toast, mobile menu toggle (keyboard Escape support), scroll progress, back-to-top, IntersectionObserver-based active nav (`aria-current`).
+- **`css/styles.css`** — Animations, scrollbar, scroll progress, back-to-top, mobile menu, copy toast, focus-visible rings, `@media (prefers-reduced-motion)`, `@media print`.
+- **`data/en.json`, `data/vi.json`** — i18n strings (keyed by `data-i18n`). Keys MUST match between locales.
+- **`data/comparison.json`** — AI coding tool feature matrix.
+- **`.github/workflows/pages.yml`** — GitHub Pages deploy on push to `main`.
+- Section order: Hero → Agentic Loop → Agents/Skills → CLAUDE.md → Agent Anatomy → Workflow Lifecycle → Setup → MCPs/Skills → **Advanced Config** → Orchestrator → Tips → Security → Comparison → FAQ → Footer
 - Navigation groups: Fundamentals, Practice, Resources
 
 ## Conventions
 
-- Styling is done via Tailwind utility classes inline in HTML. Custom CSS in `css/styles.css` is only for animations and effects that Tailwind can't express.
-- The dark color scheme uses slate-950 (`#020617`) as the base background with cyan-400/500 as the accent color.
-- Desktop navigation uses CSS-only dropdown menus (group-hover pattern). Mobile navigation uses a JS-toggled hamburger menu.
-- Section IDs (`#loop`, `#collaboration`, `#claudemd`, `#setup`, `#extend-claude`, `#orchestrator`, `#tips`, `#security`, `#faq`) are used for smooth-scroll anchor navigation with `scroll-padding-top` offset for the fixed nav.
-- All files are minified for production. JS via `terser`, CSS via `csso-cli`, HTML via `html-minifier-terser`.
+- Tailwind utility classes inline in HTML. Custom CSS in `css/styles.css` only for things Tailwind can't express (animations, scrollbar, print, reduced-motion).
+- Dark color scheme: slate-950 (`#020617`) base, cyan-400/500 accents.
+- Desktop dropdowns use CSS `group-hover` + `group:focus-within` (keyboard accessible). Mobile uses JS-toggled hamburger.
+- Section IDs used for smooth-scroll anchor nav with `scroll-padding-top` offset: `#loop`, `#collaboration`, `#claudemd`, `#agent-architecture`, `#agentic-workflow`, `#setup`, `#extend-claude`, `#advanced`, `#orchestrator`, `#tips`, `#security`, `#comparison`, `#faq`.
+- **i18n:** When adding a `data-i18n` element, add the key to BOTH `data/en.json` and `data/vi.json`. i18n values may contain HTML (`<strong>`, `<code>`, `<a>`) — they're sanitized in `main.js` (strips `<script>` and `on*=`).
+- **A11y checklist:** icon-only buttons have `aria-label`; decorative SVGs have `aria-hidden="true"`; animations respect `prefers-reduced-motion`; keyboard focus uses `:focus-visible`.
+- All production files are minified via `terser` (JS), `csso-cli` (CSS), `html-minifier-terser` (HTML).

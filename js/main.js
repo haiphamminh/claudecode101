@@ -31,12 +31,25 @@ function loadLang(lang){
   return fetch("data/"+lang+".json").then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}).then(function(d){i18nCache[lang]=d;return d}).catch(function(err){console.error("i18n load error:",err);showToast("Could not load "+lang+" translations");return null})
 }
 
+function isIconOnly(el){
+  var hasText=false,hasIcon=false;
+  for(var i=0;i<el.childNodes.length;i++){
+    var c=el.childNodes[i];
+    if(c.nodeType===3&&c.nodeValue.trim())hasText=true;
+    if(c.nodeType===1&&(c.tagName==="svg"||c.tagName==="SVG"||c.tagName==="IMG"))hasIcon=true
+  }
+  return hasIcon&&!hasText
+}
+
 function applyLang(e,t){
   if(!t)return;
   var n=document.querySelectorAll("[data-i18n]");
   for(var o=0;o<n.length;o++){
-    var r=n[o].getAttribute("data-i18n");
-    if(void 0!==t[r]){n[o].innerHTML=sanitizeI18n(t[r])}
+    var el=n[o],r=el.getAttribute("data-i18n");
+    if(void 0===t[r])continue;
+    var value=sanitizeI18n(t[r]);
+    if(isIconOnly(el)&&!/<[a-z]/i.test(value))continue;
+    el.innerHTML=value
   }
   var attrEls=document.querySelectorAll("[data-i18n-attr]");
   for(var a=0;a<attrEls.length;a++){
